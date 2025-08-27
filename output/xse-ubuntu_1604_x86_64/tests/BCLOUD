@@ -1,0 +1,14 @@
+ImportFlagsFrom('../')
+
+# link flags should be after all libs
+LINKFLAGS_AFTER_LIBS(True)
+
+INCPATHS(' '.join([
+    '$INC/',
+    '../common/include',
+    '../sd_cdnn/include',
+]))
+
+for src in GLOB('ut_env/*/*.cpp').split():
+    name = os.path.basename(os.path.dirname(src))
+    Application(os.path.join("ut_env", name), Sources(src), LinkFlags('-static -Wl,--whole-archive -lpthread -Wl,--no-whole-archive'))

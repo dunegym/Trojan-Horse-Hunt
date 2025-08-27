@@ -1,0 +1,6 @@
+project(reshape_cmd)
+include_directories("~/.jumbo/include")
+link_directories("~/.jumbo/lib")
+set(CMAKE_CXX_STANDARD 11)
+add_executable(reshape_cmd main.cpp)
+target_link_libraries(reshape_cmd gflags)

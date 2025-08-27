@@ -1,0 +1,6 @@
+project(dma_cmd)
+include_directories("~/.jumbo/include")
+link_directories("~/.jumbo/lib")
+set(CMAKE_CXX_STANDARD 11)
+add_executable(dma_cmd main.cpp)
+target_link_libraries(dma_cmd gflags)

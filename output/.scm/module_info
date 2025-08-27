@@ -1,0 +1,8 @@
+[build_info]
+enable-ccover = 
+source-with-patch = no
+the-build-args-of-CC = 
+module = baidu/xpu/XSE_OUTPUT
+revision = 
+git_url = ssh://wuyuzhang@icode.baidu.com:8235/baidu/xpu/XSE_OUTPUT
+git_version = 9e9824421454644bdda9ad54980863c6ccd9f07a

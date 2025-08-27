@@ -1,0 +1,6 @@
+project(ds_cmd)
+include_directories("~/.jumbo/include")
+link_directories("~/.jumbo/lib")
+set(CMAKE_CXX_STANDARD 11)
+add_executable(ds_cmd main.cpp)
+target_link_libraries(ds_cmd gflags)

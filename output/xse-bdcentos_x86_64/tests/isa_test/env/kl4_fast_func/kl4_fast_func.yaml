@@ -1,0 +1,88 @@
+
+simulator:
+
+  fast_func:
+    environ:
+      XPU_SIMULATOR_MODE: 1
+      LD_LIBRARY_PATH: ../../../../output/so
+      XPUSIM_DEVICE_MODEL: KUNLUN4
+      XPUSIM_FAST_ENABLE: 1
+    run_rule:
+      cdnn_run:
+        environ:
+          XPUSIM_GM_BASE_ADDR: 0x100000000
+          XPUSIM_GM_SIZE: 0xf00000000        
+        command: ../../../../output/bin/kl4_verify_tool
+        option:
+          code: 
+            file: --cmd_seq_file
+            core_start: --start_core
+            core_num: --core_num
+          data:
+            gm:
+              addr: --init_ddr_addr
+              file: --ddr_file
+            l1d: --l1d_file
+            l1w: --l1w_file
+            uni: --uni_file
+          dump: 
+            gm:
+              addr: --dump_ddr_addr
+              len: --dump_ddr_len
+              file: --dump_ddr_file
+            l1d: 
+              option: --dump_l1d_file
+            l1w: 
+              option: --dump_l1w_file
+            uni: 
+              option: --dump_uni_file     
+
+      mac_run:      
+        command: ../../../../output/bin/kl4_verify_tool
+        option:
+          code: 
+            file: --cmd_seq_file
+            core_start: --start_core
+            core_num: --core_num
+          data:
+            gm:
+              addr: --init_ddr_addr
+              file: --ddr_file
+            l1d: --l1d_file
+            l1w: --l1w_file
+            uni: --uni_file
+          dump: 
+            gm:
+              addr: --dump_ddr_addr
+              len: --dump_ddr_len
+              file: --dump_ddr_file
+            l1d: 
+              option: --dump_l1d_file
+            l1w: 
+              option: --dump_l1w_file
+            uni: 
+              option: --dump_uni_file   
+                    
+      cluster_run:
+        command: ../../../../output/bin/kl4_xpu_cluster_simulator
+        option:
+          code:
+            num: --enable_core_num
+          other: --cdnn_cluster_en=0 --input_dir=init
+        copy: True
+
+      sdnn_cluster_run:
+        command: ../../../../output/bin/kl4_xpu_cluster_simulator
+        option:
+          code:
+            num: --enable_core_num        
+          other: --cdnn_cluster_en=1 --input_dir=init
+        copy: True          
+
+      core_run:
+        command: ../../../../output/bin/kl4_xpu_core_simulator
+        option:
+          code:
+            start: --program_start
+          other: --input_dir=init
+        copy: True

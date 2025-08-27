@@ -1,0 +1,6 @@
+project(mac_cmd)
+include_directories("~/.jumbo/include")
+link_directories("~/.jumbo/lib")
+set(CMAKE_CXX_STANDARD 11)
+add_executable(mac_cmd main.cpp)
+target_link_libraries(mac_cmd gflags)

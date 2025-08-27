@@ -1,0 +1,6 @@
+project(sd_cdnn_data_gen)
+include_directories("~/.jumbo/include")
+link_directories("~/.jumbo/lib")
+set(CMAKE_CXX_STANDARD 11)
+add_executable(sd_cdnn_data_gen main.cpp)
+target_link_libraries(sd_cdnn_data_gen gflags)
